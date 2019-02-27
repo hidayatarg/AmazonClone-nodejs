@@ -16,4 +16,13 @@ app.use(bodyParser.urlencoded({
 // log out all request to terminal
 app.use(morgan('dev'));
 
+app.get('/', (req, res, next)=>{
+    res.json({
+        user: "Hidayat Arghandabi"
+    });
+});
 
+// run server
+app.listen(3030, err=>{
+    console.log("Running on port 3030");
+});
