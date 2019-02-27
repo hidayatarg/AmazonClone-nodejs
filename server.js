@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const config = require('./config');
 
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({
 }));
 // log out all request to terminal
 app.use(morgan('dev'));
+app.use(cors());
 
 app.get('/', (req, res, next)=>{
     res.json({
