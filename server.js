@@ -4,9 +4,21 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const config = require('./config');
+
 
 // express instance
 const app = express();
+
+// connect to db
+mongoose.connect(config.database, (err)=>{
+    if (err){
+        console.log(err);
+    }else{
+        console.log('connected to the database');      
+    }
+});
+
 // reading data in specific json format
 app.use(bodyParser.json());
 // url encoded (reading all source of data => false)
@@ -23,6 +35,6 @@ app.get('/', (req, res, next)=>{
 });
 
 // run server
-app.listen(3030, err=>{
-    console.log("Running on port 3030");
+app.listen(config.port, err=>{
+    console.log('Running on port '+ config.port);
 });
