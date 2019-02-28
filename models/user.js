@@ -33,3 +33,10 @@ UserSchema.pre('save', function(next) {
         next();
     });
 });
+
+
+// Custom Function for Password Comparison
+UserSchema.method.comparePassword = function (password) {
+    // password you pass, (this password is from db)
+    return bcrypt.compareSync(password, this.password);
+};
