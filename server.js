@@ -36,6 +36,12 @@ app.get('/', (req, res, next)=>{
     });
 });
 
+// account routes
+const userRoutes = require('./routes/account');
+app.use('/api/accounts', userRoutes);
+
+
+
 // run server
 app.listen(config.port, err=>{
     console.log('Running on port '+ config.port);
