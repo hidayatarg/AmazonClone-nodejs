@@ -1,9 +1,12 @@
-const mongooser = require ('mongoose');
+const mongooser = require('mongoose');
 
 // creat user blue prints
 const Schema = mongooser.Schema;
 
-const userSchema = new Schema({
+// encrypt password
+const bcrypt = require('bcrypt-node.js');
+
+const UserSchema = new Schema({
     email: { type: String, unique: true, lowercase: true},
     name: String,
     password: String,
@@ -18,4 +21,15 @@ const userSchema = new Schema({
         postalCode: String,
     },
     created: {type: Date, default: Date.now}
+});
+
+UserSchema.pre('save', function(next) {
+    var user = this;
+    // if password is changed (new do call back else encryption)
+    if(!user.isModified('password')) return next();
+    bcrypt.hash(user.password, null, null, function(err, hash){
+        if (err) return next(err);
+        user.password = hash;
+        next();
+    });
 });

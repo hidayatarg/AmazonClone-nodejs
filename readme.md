@@ -12,3 +12,6 @@ Data reader. Nodejs cannot communicate with front end data
 ## Mongoose
 MangoDB angent with easy interface.
 
+## Install
+npm install bcrypt-nodejs --save
+
