@@ -3,7 +3,7 @@ const config = require('../config');
 
 module.exports = function(req, res, next) {
     // request the header
-    let token = req.header["authorization"];
+    let token = req.headers["authorization"];
 
     // token is avaliable
     if(token) {

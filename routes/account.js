@@ -7,6 +7,9 @@ const User = require('../models/user');
 
 const config = require('../config');
 
+// custom middleware
+const checkJWT = require('../middlewares/check-jwt');
+
 // signup
 router.post('/signup', (req, res, next) => {
     // console.log(req.body);
@@ -82,5 +85,55 @@ router.post('/login', (req, res, next) => {
     });
 });
 
+// profile API
+// router.get('/profile');
+// router.post('/profile')
+router.route('/profile')
+   router.route('/profile')
+       .get(checkJWT, (req, res, next) => {
+           User.findOne({
+               _id: req.decoded.user._id
+           }, (err, user) => {
+               res.json({
+                   success: true,
+                   user: user,
+                   message: "Successful"
+               });
+           });
+       })
+       .post(checkJWT, (req, res, next) => {
+           User.findOne({
+               _id: req.decoded.user._id
+           }, (err, user) => {
+               if (err) return next(err);
+
+               if (req.body.name) user.name = req.body.name;
+               if (req.body.email) user.email = req.body.email;
+               if (req.body.password) user.password = req.body.password;
+
+               user.isSeller = req.body.isSeller;
+
+               user.save();
+               res.json({
+                   success: true,
+                   message: 'Successfully edited your profile'
+               });
+           });
+       });
+
+   router.route('/address')
+       .get(checkJWT, (req, res, next) => {
+           User.findOne({
+               _id: req.decoded.user._id
+           }, (err, user) => {
+               res.json({
+                   success: true,
+                   address: user.address,
+                   message: "Successful"
+               });
+           });
+       })
+
+    .post()
 
 module.exports = router;
