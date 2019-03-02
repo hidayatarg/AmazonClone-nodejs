@@ -17,3 +17,4 @@ npm install bcrypt-nodejs --save
 
 ## Middlware
 check-jwt: to check the token validity.
+Edit the user Information
