@@ -15,3 +15,5 @@ MangoDB angent with easy interface.
 ## Install
 npm install bcrypt-nodejs --save
 
+## Middlware
+check-jwt: to check the token validity.
