@@ -44,6 +44,10 @@ app.use('/api/accounts', userRoutes);
 const mainRoutes = require('./routes/main');
 app.use('/api', mainRoutes);
 
+// seller routes
+const sellerRoutes = require('./routes/seller');
+app.use('/api/seller', sellerRoutes);
+
 
 
 // run server
