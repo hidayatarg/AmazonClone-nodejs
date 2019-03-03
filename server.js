@@ -40,6 +40,10 @@ app.get('/', (req, res, next)=>{
 const userRoutes = require('./routes/account');
 app.use('/api/accounts', userRoutes);
 
+// main routes
+const mainRoutes = require('./routes/main');
+app.use('/api', mainRoutes);
+
 
 
 // run server
