@@ -9,4 +9,17 @@ const s3 = new aws.S3({
     secretAccessKey: "7udvwsHireLsGdfevv26OQHyciaG1jYQ+UDssuWI"
 });
 
+const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: 'amazonawebapplication',
+        metadata: function(req, file, cb) {
+            cb(null, { fileName: file.fileName });
+        },
+        key: function(req, file, cb) {
+            cb(null, { fileName: file.fileName })
+        },
+    })
+});
+
 module.exports = router;
