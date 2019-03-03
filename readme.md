@@ -18,3 +18,6 @@ npm install bcrypt-nodejs --save
 ## Middlware
 check-jwt: to check the token validity.
 Edit the user Information
+
+## Adding a category and a product as a Seller
+Created the category schema
