@@ -10,7 +10,7 @@
   "author": "Hidayat Arghandabi",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.413.0",
+    "aws-sdk": "^2.418.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
